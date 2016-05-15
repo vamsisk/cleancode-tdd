@@ -20,4 +20,9 @@ public class CalculateStats {
 		return Collections.max(dataList);
 	}
 
+	public int getListSize(List<Integer> dataList) {
+		return dataList.size();
+	}
+
+	
 }
