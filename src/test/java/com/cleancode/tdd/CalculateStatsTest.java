@@ -51,6 +51,6 @@ public class CalculateStatsTest {
 	public void returnAverageValueOfListValues() {
 		float averageValue = calculateStats.getAverageValue(dataList);
 
-		assertEquals("Wrong minumum value returned.", 18.166666f, averageValue, 0.0f);
+		assertEquals("Wrong average value returned.", 18.166666f, averageValue, 0.0f);
 	}
 }
