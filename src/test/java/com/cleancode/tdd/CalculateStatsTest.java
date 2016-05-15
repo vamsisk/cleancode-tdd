@@ -12,11 +12,12 @@ import org.junit.Test;
 
 public class CalculateStatsTest {
 
-	CalculateStats calculateStats;
+	CalculateStats calculateStats = new CalculateStats();
+
+	List<Integer> dataList = Arrays.asList(6, 9, 15, -2, 92, 11);
 
 	@Before
 	public void setUp() throws Exception {
-		calculateStats = new CalculateStats();
 	}
 
 	@After
@@ -30,8 +31,17 @@ public class CalculateStatsTest {
 
 		Integer minValue = calculateStats.getMinValue(dataList);
 
-		assertNotNull("Minumum value returned. ", minValue);
+		assertNotNull("Minumum value not returned. ", minValue);
 		assertEquals("Wrong minumum value returned.", -2, minValue.intValue());
+	}
+
+	@Test
+	public void returnaxValueFromListTest() {
+
+		Integer maxValue = calculateStats.getMaxValue(dataList);
+
+		assertNotNull("Maximum value not returned. ", maxValue);
+		assertEquals("Wrong minumum value returned.", 92, maxValue.intValue());
 	}
 
 }
