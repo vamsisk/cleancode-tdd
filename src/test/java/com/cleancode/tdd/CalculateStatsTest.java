@@ -26,9 +26,6 @@ public class CalculateStatsTest {
 
 	@Test
 	public void returnMinValueFromListTest() {
-
-		List<Integer> dataList = Arrays.asList(6, 9, 15, -2, 92, 11);
-
 		Integer minValue = calculateStats.getMinValue(dataList);
 
 		assertNotNull("Minumum value not returned. ", minValue);
@@ -36,12 +33,24 @@ public class CalculateStatsTest {
 	}
 
 	@Test
-	public void returnaxValueFromListTest() {
-
+	public void returMaxValueFromListTest() {
 		Integer maxValue = calculateStats.getMaxValue(dataList);
 
 		assertNotNull("Maximum value not returned. ", maxValue);
 		assertEquals("Wrong minumum value returned.", 92, maxValue.intValue());
 	}
 
+	@Test
+	public void returnListSizeTest() {
+		int listSize = calculateStats.getListSize(dataList);
+
+		assertEquals("Wrong minumum value returned.", 6, listSize);
+	}
+
+	@Test
+	public void returnAverageValueOfListValues() {
+		float averageValue = calculateStats.getAverageValue(dataList);
+
+		assertEquals("Wrong minumum value returned.", 18.166666f, averageValue, 0.0f);
+	}
 }
