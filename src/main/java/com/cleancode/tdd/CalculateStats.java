@@ -13,12 +13,11 @@ import java.util.List;
 public class CalculateStats {
 
 	public Integer getMinValue(List<Integer> dataList) {
-
 		return Collections.min(dataList);
 	}
 
 	public Integer getMaxValue(List<Integer> dataList) {
-		return null;
+		return Collections.max(dataList);
 	}
 
 }
