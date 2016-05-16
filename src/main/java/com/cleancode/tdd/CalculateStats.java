@@ -5,6 +5,7 @@ package com.cleancode.tdd;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.OptionalDouble;
 
 /**
  * @author vsure
@@ -24,5 +25,9 @@ public class CalculateStats {
 		return dataList.size();
 	}
 
-	
+	public double getAverageValue(List<Integer> dataList) {
+		OptionalDouble value = dataList.stream().mapToInt(m -> m).average();
+		return value.getAsDouble();
+	}
+
 }

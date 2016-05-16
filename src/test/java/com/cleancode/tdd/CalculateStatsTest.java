@@ -49,8 +49,8 @@ public class CalculateStatsTest {
 
 	@Test
 	public void returnAverageValueOfListValues() {
-		float averageValue = calculateStats.getAverageValue(dataList);
+		double averageValue = calculateStats.getAverageValue(dataList);
 
-		assertEquals("Wrong average value returned.", 18.166666f, averageValue, 0.0f);
+		assertEquals("Wrong average value returned.", 21.833333, averageValue, 0.000003f);
 	}
 }
