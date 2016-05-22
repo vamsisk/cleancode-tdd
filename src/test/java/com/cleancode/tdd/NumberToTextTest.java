@@ -9,6 +9,13 @@ public class NumberToTextTest {
 	private NumberToText numberToText = new NumberToText();
 
 	@Test
+	public void testFourDigitsThreeFiveNineTwo() {
+		String text = numberToText.getText(3592);
+
+		assertEquals("Three Thousand Five Hundred Ninety Two", text);
+	}
+	
+	@Test
 	public void testTripleDigitNineNineNine() {
 		String text = numberToText.getText(999);
 
