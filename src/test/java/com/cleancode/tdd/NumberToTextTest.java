@@ -28,4 +28,18 @@ public class NumberToTextTest {
 
 		assertEquals("Sixty Eight", text);
 	}
+
+	@Test
+	public void testDoubleDigitNumberNinetyNine() {
+		String text = numberToText.getText(99);
+
+		assertEquals("Ninety Nine", text);
+	}
+
+	@Test
+	public void testDoubleDigitNumberTwenty() {
+		String text = numberToText.getText(20);
+
+		assertEquals("Twenty", text);
+	}
 }
