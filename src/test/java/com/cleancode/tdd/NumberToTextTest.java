@@ -9,6 +9,20 @@ public class NumberToTextTest {
 	private NumberToText numberToText = new NumberToText();
 
 	@Test
+	public void testTripleDigitNineNineNine() {
+		String text = numberToText.getText(999);
+
+		assertEquals("Nine Hundred Ninety Nine", text);
+	}
+
+	@Test
+	public void testTripleDigitSevenThirtyNine() {
+		String text = numberToText.getText(739);
+
+		assertEquals("Seven Hundred Thirty Nine", text);
+	}
+
+	@Test
 	public void testTripleDigitOneFortySix() {
 		String text = numberToText.getText(146);
 
