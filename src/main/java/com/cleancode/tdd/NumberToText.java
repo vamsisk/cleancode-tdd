@@ -7,24 +7,30 @@ public class NumberToText {
 	private String[] names = { "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
 			"Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
 
-	private String[] tens = { "", "Twenty", "Thirty", "Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+	private String[] tens = { "", "ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
 	public String getText(int number) {
 
+		String text = "";
+
 		if (number == 0) {
-			return "Zero";
-		} else if (number < 20 && number > 0) {
-			return names[number];
-		} else if (number < 100) {
-			String text = names[number % 10];
-
-			number = number / 10;
-
-			text = tens[number - 1] + (text.isEmpty() ? text : SPACE + text);
-			return text;
+			text = "Zero";
+		} else if ((number % 100) < 20) {
+			text = names[number % 100];
+			number /= 100;
 		} else {
-			return "";
+			text = names[number % 10];
+			number /= 10;
+			
+			text = tens[number % 10] + (text.isEmpty() ? text : SPACE + text);
+			number /= 10;
 		}
+
+		if (number != 0) {
+			text = names[number] + " Hundred " + text;
+		}
+
+		return text;
 	}
 
 }

@@ -9,6 +9,13 @@ public class NumberToTextTest {
 	private NumberToText numberToText = new NumberToText();
 
 	@Test
+	public void testTripleDigitOneFortySix() {
+		String text = numberToText.getText(146);
+
+		assertEquals("One Hundred Forty Six", text);
+	}
+
+	@Test
 	public void testSingleDigitNumberSeven() {
 		String text = numberToText.getText(7);
 
