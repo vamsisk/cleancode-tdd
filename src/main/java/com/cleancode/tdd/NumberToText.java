@@ -9,9 +9,9 @@ public class NumberToText {
 
 	private String[] tens = { "", "ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
 
-	private String[] ilions = { "", " Thousand ", "Million" };
+	private String[] ilions = { "", " Thousand ", " Million ", " Billion " };
 
-	public String getText(int number) {
+	public String getText(long number) {
 
 		if (number == 0) {
 			return "Zero";
@@ -21,10 +21,10 @@ public class NumberToText {
 		int illionCounter = 0;
 
 		do {
-			int mod = number % 1000;
+			long mod = number % 1000;
 
 			if (mod != 0) {
-				String partialText = covertNumberToTextUnderThousand(mod);
+				String partialText = covertNumberToTextUnderThousand((int)mod);
 				text = partialText + ilions[illionCounter] + text;
 			}
 			illionCounter++;

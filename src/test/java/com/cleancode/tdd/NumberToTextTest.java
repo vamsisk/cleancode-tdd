@@ -9,12 +9,35 @@ public class NumberToTextTest {
 	private NumberToText numberToText = new NumberToText();
 
 	@Test
+	public void testThreeThreeThreeThreeFiveNineTwoFourEightFive() {
+		String text = numberToText.getText(3333592485L);
+
+		assertEquals(
+				"Three Billion Three Hundred Thirty Three Million Five Hundred Ninety Two Thousand Four Hundred Eighty Five",
+				text);
+	}
+
+	@Test
+	public void testThreeFiveNineTwoFourEight() {
+		String text = numberToText.getText(359248);
+
+		assertEquals("Three Hundred Fifty Nine Thousand Two Hundred Forty Eight", text);
+	}
+
+	@Test
+	public void testThreeFiveNineTwoFour() {
+		String text = numberToText.getText(35924);
+
+		assertEquals("Thirty Five Thousand Nine Hundred Twenty Four", text);
+	}
+
+	@Test
 	public void testFourDigitsThreeFiveNineTwo() {
 		String text = numberToText.getText(3592);
 
 		assertEquals("Three Thousand Five Hundred Ninety Two", text);
 	}
-	
+
 	@Test
 	public void testTripleDigitNineNineNine() {
 		String text = numberToText.getText(999);
