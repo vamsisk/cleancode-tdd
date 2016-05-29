@@ -13,7 +13,7 @@ public class NumberToText {
 
 	public String getText(long number) {
 
-		if (number == 0) {
+		if (isZero(number)) {
 			return "Zero";
 		}
 
@@ -32,6 +32,10 @@ public class NumberToText {
 		} while (number > 0);
 
 		return text;
+	}
+
+	private boolean isZero(long number) {
+		return number == 0;
 	}
 
 	private String covertNumberToTextUnderThousand(int number) {
