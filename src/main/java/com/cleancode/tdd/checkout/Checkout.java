@@ -1,7 +1,8 @@
 package com.cleancode.tdd.checkout;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 import com.cleancode.tdd.PriceRule;
@@ -12,11 +13,9 @@ import com.cleancode.tdd.PriceRule;
  */
 public class Checkout extends Observable {
 
-	private List<String> items = new ArrayList<String>();
+	private Map<String, Double> items = new HashMap<String, Double>();
 
 	private SkuPrice skuPrice = new SkuPrice();
-
-	private double total = 0.00;
 
 	private Checkout(List<PriceRule> rules) {
 		rules.forEach(rule -> {
@@ -28,15 +27,25 @@ public class Checkout extends Observable {
 		return new Checkout(rules);
 	}
 
+	private void addItem(String item) {
+		Double updatedValue = skuPrice.price(item);
+		if (items.containsKey(item)) {
+			updatedValue += items.get(item);
+		}
+		items.put(item, updatedValue);
+	}
+
 	public void scan(String item) {
-		items.add(item);
-		total += skuPrice.price(item);
+		addItem(item);
 		setChanged();
-		notifyObservers(item);
-		clearChanged();
+		notifyObservers(items);
+	}
+
+	public void clearChanged() {
+		super.clearChanged();
 	}
 
 	public double total() {
-		return total;
+		return items.values().stream().reduce(0.0, Double::sum);
 	}
 }
