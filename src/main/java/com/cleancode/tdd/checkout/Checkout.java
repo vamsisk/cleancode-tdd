@@ -5,17 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import com.cleancode.tdd.PriceRule;
-
 /**
  * @author vsure
  *
  */
 public class Checkout extends Observable {
 
-	private Map<String, Double> items = new HashMap<String, Double>();
-
-	private SkuPrice skuPrice = new SkuPrice();
+	private Map<String, ItemValue> items = new HashMap<String, ItemValue>();
 
 	private Checkout(List<PriceRule> rules) {
 		rules.forEach(rule -> {
@@ -28,17 +24,17 @@ public class Checkout extends Observable {
 	}
 
 	private void addItem(String item) {
-		Double updatedValue = skuPrice.price(item);
-		if (items.containsKey(item)) {
-			updatedValue += items.get(item);
+		if (!items.containsKey(item)) {
+			items.put(item, new ItemValue(item));
+		} else {
+			items.get(item).addCount();
 		}
-		items.put(item, updatedValue);
 	}
 
 	public void scan(String item) {
 		addItem(item);
 		setChanged();
-		notifyObservers(items);
+		notifyObservers(item);
 	}
 
 	public void clearChanged() {
@@ -46,6 +42,11 @@ public class Checkout extends Observable {
 	}
 
 	public double total() {
-		return items.values().stream().reduce(0.0, Double::sum);
+		return items.values().stream().map(m -> m.getTotalPrice()).reduce(0.0, Double::sum);
 	}
+
+	public Map<String, ItemValue> getItems() {
+		return items;
+	}
+
 }
