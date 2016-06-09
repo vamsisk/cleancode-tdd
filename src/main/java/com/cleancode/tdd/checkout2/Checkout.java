@@ -9,13 +9,17 @@ package com.cleancode.tdd.checkout2;
  */
 public class Checkout {
 
-	public String item;
+	private int total;
 
 	public void scan(String item) {
-		this.item = item;
+		this.total += getPrice(item);
 	}
 
 	public int total() {
+		return total;
+	}
+
+	private int getPrice(String item) {
 		if (item.equals("A")) {
 			return 50;
 		} else if (item.equals("B")) {

@@ -8,6 +8,28 @@ import org.junit.Test;
 public class CheckoutTest {
 
 	@Test
+	public void test_AB() {
+		Checkout checkout = new Checkout();
+
+		checkout.scan("A");
+		checkout.scan("B");
+
+		assertEquals("Total count is not matching expected.", 80, checkout.total());
+	}
+	
+	@Test
+	public void test_ABCD() {
+		Checkout checkout = new Checkout();
+
+		checkout.scan("A");
+		checkout.scan("B");
+		checkout.scan("C");
+		checkout.scan("D");
+
+		assertEquals("Total count is not matching expected.", 115, checkout.total());
+	}
+	
+	@Test
 	public void test_A() {
 		Checkout checkout = new Checkout();
 
