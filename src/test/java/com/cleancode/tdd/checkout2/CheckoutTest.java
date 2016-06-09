@@ -14,4 +14,13 @@ public class CheckoutTest {
 
 		assertEquals("Total count is not matching expected.", 50, checkout.total());
 	}
+	
+	@Test
+	public void test_B() {
+		Checkout checkout = new Checkout();
+
+		checkout.scan("B");
+
+		assertEquals("Total count is not matching expected.", 30, checkout.total());
+	}
 }
