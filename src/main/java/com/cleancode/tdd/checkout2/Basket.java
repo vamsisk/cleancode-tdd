@@ -1,6 +1,7 @@
 package com.cleancode.tdd.checkout2;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Basket {
@@ -9,6 +10,10 @@ public class Basket {
 
 	public void addSku(Sku sku) {
 		skus.compute(sku, (key, value) -> value == null ? 1 : value + 1);
+	}
+
+	public void addSku(List<Sku> skus) {
+		skus.forEach(this::addSku);
 	}
 
 	public Map<Sku, Integer> getSkus() {

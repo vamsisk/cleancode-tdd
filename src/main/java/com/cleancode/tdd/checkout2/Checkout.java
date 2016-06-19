@@ -3,6 +3,8 @@
  */
 package com.cleancode.tdd.checkout2;
 
+import java.util.List;
+
 /**
  * @author vsure
  *
@@ -27,6 +29,10 @@ public class Checkout {
 
 	public void scan(Sku sku) {
 		basket.addSku(sku);
+	}
+	
+	public void scan(List<Sku> skus) {
+		basket.addSku(skus);
 	}
 
 	public int total() {
