@@ -35,6 +35,6 @@ public class PromotionTest {
 		checkout.scan(A);
 		checkout.scan(A);
 
-		Assert.assertThat(130, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(180, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 }
