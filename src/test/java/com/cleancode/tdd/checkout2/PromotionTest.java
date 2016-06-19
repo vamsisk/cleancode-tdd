@@ -37,4 +37,20 @@ public class PromotionTest {
 
 		Assert.assertThat(180, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
+
+	@Test
+	public void returnPromotionPriceIfMathces6ForSkuAAndSumOnActualPriceForRemainingItemsOfA() {
+		Promotion promotion = new Promotion(Sku.A, 3, 130);
+
+		Checkout checkout = new Checkout(promotion);
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+
+		Assert.assertThat(310, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+	}
 }
