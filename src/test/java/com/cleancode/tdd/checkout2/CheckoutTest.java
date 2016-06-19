@@ -11,17 +11,6 @@ import org.junit.Test;
 public class CheckoutTest {
 
 	@Test
-	public void test_3ItemsOfAFor130_promotion() {
-		Checkout checkout = new Checkout();
-
-		checkout.scan(A);
-		checkout.scan(A);
-		checkout.scan(A);
-
-		assertEquals("Total count is not matching expected.", 150, checkout.total());
-	}
-
-	@Test
 	public void test_AB() {
 		Checkout checkout = new Checkout();
 
