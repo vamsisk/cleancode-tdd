@@ -33,10 +33,10 @@ public class Checkout {
 
 		int total = 0;
 		if (promotion != null) {
-			promotion.applyAndReturnUpdatedTotal(this.getBasket());
+			total += promotion.applyAndReturnUpdatedTotal(this.getBasket());
 		}
 
-		total = basket.total();
+		total += basket.total();
 
 		return total;
 	}
