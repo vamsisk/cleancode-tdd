@@ -4,11 +4,21 @@ import static com.cleancode.tdd.checkout2.Sku.A;
 import static com.cleancode.tdd.checkout2.Sku.B;
 import static com.cleancode.tdd.checkout2.Sku.C;
 import static com.cleancode.tdd.checkout2.Sku.D;
+import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 public class CheckoutTest {
+
+	@Test
+	public void testPromotionAIncludingSingleItemsUsingMultiitemScan() {
+		Checkout checkout = new Checkout(new Promotion(Sku.A, 3, 130));
+
+		checkout.scan(asList(A, B, A, C, D, A));
+
+		assertEquals("Total count is not matching expected.", (195), checkout.total());
+	}
 
 	@Test
 	public void testPromotionAIncludingSingleItems() {
@@ -21,7 +31,7 @@ public class CheckoutTest {
 		checkout.scan(D);
 		checkout.scan(A);
 
-		assertEquals("Total count is not matching expected.", (130 + 30 + 20 + 15), checkout.total());
+		assertEquals("Total count is not matching expected.", (195), checkout.total());
 	}
 
 	@Test
