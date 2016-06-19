@@ -4,12 +4,22 @@ import static com.cleancode.tdd.checkout2.Sku.A;
 import static com.cleancode.tdd.checkout2.Sku.B;
 import static com.cleancode.tdd.checkout2.Sku.C;
 import static com.cleancode.tdd.checkout2.Sku.D;
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-@SuppressWarnings("deprecation")
 public class CheckoutTest {
+
+	@Test
+	public void test_3ItemsOfAFor130_promotion() {
+		Checkout checkout = new Checkout();
+
+		checkout.scan(A);
+		checkout.scan(A);
+		checkout.scan(A);
+
+		assertEquals("Total count is not matching expected.", 150, checkout.total());
+	}
 
 	@Test
 	public void test_AB() {

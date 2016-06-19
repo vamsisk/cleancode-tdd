@@ -11,6 +11,22 @@ public class Basket {
 		skus.compute(sku, (key, value) -> value == null ? 1 : value + 1);
 	}
 
+	public Map<Sku, Integer> getSkus() {
+		return skus;
+	}
+
+	public boolean contains(Sku sku) {
+		return skus.containsKey(sku);
+	}
+
+	public Integer getSku(Sku sku) {
+		return skus.get(sku);
+	}
+
+	public void resetItemCountFor(Sku sku) {
+		skus.computeIfPresent(sku, (k, v) -> 0);
+	}
+
 	public int total() {
 		return skus.keySet().stream().mapToInt(sku -> sku.price() * skus.get(sku)).sum();
 	}
