@@ -39,7 +39,7 @@ public class PromotionTest {
 	}
 
 	@Test
-	public void returnPromotionPriceIfMathces6ForSkuAAndSumOnActualPriceForRemainingItemsOfA() {
+	public void returnPromotionPriceIfMathces7ForSkuAAndSumOnActualPriceForRemainingItemsOfA() {
 		Promotion promotion = new Promotion(Sku.A, 3, 130);
 
 		Checkout checkout = new Checkout(promotion);
