@@ -9,13 +9,13 @@ package com.cleancode.tdd.checkout2;
  */
 public class Checkout {
 
-	private int total;
+	private Basket basket = new Basket();
 
 	public void scan(Sku sku) {
-		this.total += sku.price();
+		basket.addSku(sku);
 	}
 
 	public int total() {
-		return total;
+		return basket.total();
 	}
 }
