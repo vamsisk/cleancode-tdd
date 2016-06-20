@@ -11,6 +11,36 @@ import org.junit.Test;
 public class CheckoutTest {
 
 	@Test
+	public void test_MultiSku_Promotion_ForAandB_Including_IndividualPromotionFor_AandB() {
+		Checkout checkout = new Checkout(new MultiSkuPromotion(A, B, 5), new MultiItemPromotion(Sku.A, 3, 130),
+				new MultiItemPromotion(Sku.B, 2, 45));
+
+		checkout.scan(A, B, B, A, C, D, B, B, A, A, A);
+
+		assertEquals("Total count is not matching expected.", (45 + 10 + 50), checkout.total());
+	}
+
+	@Test
+	public void test_MultiSku_Promotion_ForAandB_Including_IndividualPromotionFor_B() {
+		Checkout checkout = new Checkout(new MultiSkuPromotion(A, B, 5), new MultiItemPromotion(Sku.A, 3, 130),
+				new MultiItemPromotion(Sku.B, 2, 45));
+
+		checkout.scan(A, B, B, A, C, D, B, B);
+
+		assertEquals("Total count is not matching expected.", (90), checkout.total());
+	}
+
+	@Test
+	public void test_MultiSku_Promotion_ForAandB_Including_Individual_Items() {
+		Checkout checkout = new Checkout(new MultiSkuPromotion(A, B, 5), new MultiItemPromotion(Sku.A, 3, 130),
+				new MultiItemPromotion(Sku.B, 2, 45));
+
+		checkout.scan(A, B, B, C, A, D, A);
+
+		assertEquals("Total count is not matching expected.", (10 + 20 + 15 + 50), checkout.total());
+	}
+
+	@Test
 	public void testPromotionsA_and_B_IncludingSingleItems() {
 		Checkout checkout = new Checkout(new MultiItemPromotion(Sku.A, 3, 130), new MultiItemPromotion(Sku.B, 2, 45));
 
