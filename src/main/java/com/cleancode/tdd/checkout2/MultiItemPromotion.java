@@ -1,6 +1,6 @@
 package com.cleancode.tdd.checkout2;
 
-public class MultiItemPromotion {
+public class MultiItemPromotion implements Promotion {
 
 	private Sku sku;
 	private Integer count;
