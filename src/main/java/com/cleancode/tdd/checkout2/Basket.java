@@ -36,4 +36,9 @@ public class Basket {
 		return skus.keySet().stream().mapToInt(sku -> sku.price() * skus.get(sku)).sum();
 	}
 
+	public void reduceByOne(Sku sku) {
+		skus.computeIfPresent(sku, (k, v) -> (v - 1));
+
+	}
+
 }

@@ -17,6 +17,39 @@ import org.junit.Test;
 public class PromotionTest {
 
 	@Test
+	public void promotion_price_should_be_5_if_A_and_B_bought_together() {
+		MultiSkuPromotion promotion = new MultiSkuPromotion(A, B, 5);
+
+		Checkout checkout = new Checkout(promotion);
+
+		checkout.scan(A, B);
+
+		Assert.assertThat(5, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+	}
+
+	@Test
+	public void promotion_price_should_be_5_if_A_and_two_B_bought_together() {
+		MultiSkuPromotion promotion = new MultiSkuPromotion(A, B, 5);
+
+		Checkout checkout = new Checkout(promotion);
+
+		checkout.scan(A, B, B);
+
+		Assert.assertThat(5, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+	}
+
+	@Test
+	public void promotion_price_should_be_5_if_two_A_and_two_B_bought_together() {
+		MultiSkuPromotion promotion = new MultiSkuPromotion(A, B, 5);
+
+		Checkout checkout = new Checkout(promotion);
+
+		checkout.scan(A, B, B, A);
+
+		Assert.assertThat(10, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+	}
+
+	@Test
 	public void returnPromotionPriceIf_sku_count_Matches_For_4_SkuB() {
 		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.B, 2, 45);
 
