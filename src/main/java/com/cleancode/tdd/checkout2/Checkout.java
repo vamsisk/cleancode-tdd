@@ -3,6 +3,8 @@
  */
 package com.cleancode.tdd.checkout2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,10 +15,14 @@ public class Checkout {
 
 	private Basket basket = new Basket();
 
-	private Promotion promotion;
+	private List<Promotion> promotions = new ArrayList<Promotion>();
 
 	public Checkout(Promotion promotion) {
-		this.promotion = promotion;
+		this.promotions.add(promotion);
+	}
+
+	public Checkout(Promotion... promotions) {
+		this.promotions.addAll(Arrays.asList(promotions));
 	}
 
 	public Checkout() {
@@ -30,20 +36,17 @@ public class Checkout {
 	public void scan(Sku sku) {
 		basket.addSku(sku);
 	}
-	
-	public void scan(List<Sku> skus) {
-		basket.addSku(skus);
+
+	public void scan(Sku... skus) {
+		basket.addSku(Arrays.asList(skus));
 	}
 
 	public int total() {
 
-		int total = 0;
-		if (promotion != null) {
-			total += promotion.applyAndReturnUpdatedTotal(this.getBasket());
-		}
+		return promotions //
+				.stream() //
+				.mapToInt(promotion -> promotion.applyAndReturnUpdatedTotal(this.getBasket())) //
+				.sum() + basket.total();
 
-		total += basket.total();
-
-		return total;
 	}
 }
