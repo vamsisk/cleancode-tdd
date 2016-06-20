@@ -12,7 +12,7 @@ public class CheckoutTest {
 
 	@Test
 	public void testPromotionsA_and_B_IncludingSingleItems() {
-		Checkout checkout = new Checkout(new Promotion(Sku.A, 3, 130), new Promotion(Sku.B, 2, 45));
+		Checkout checkout = new Checkout(new MultiItemPromotion(Sku.A, 3, 130), new MultiItemPromotion(Sku.B, 2, 45));
 
 		checkout.scan(A, B, A, C, D, A, B);
 
@@ -21,7 +21,7 @@ public class CheckoutTest {
 
 	@Test
 	public void testPromotionAIncludingSingleItemsUsingMultiitemScan() {
-		Checkout checkout = new Checkout(new Promotion(Sku.A, 3, 130));
+		Checkout checkout = new Checkout(new MultiItemPromotion(Sku.A, 3, 130));
 
 		checkout.scan(A, B, A, C, D, A);
 
@@ -30,7 +30,7 @@ public class CheckoutTest {
 
 	@Test
 	public void testPromotionAIncludingSingleItems() {
-		Checkout checkout = new Checkout(new Promotion(Sku.A, 3, 130));
+		Checkout checkout = new Checkout(new MultiItemPromotion(Sku.A, 3, 130));
 
 		checkout.scan(A);
 		checkout.scan(B);

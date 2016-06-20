@@ -15,14 +15,14 @@ public class Checkout {
 
 	private Basket basket = new Basket();
 
-	private List<Promotion> promotions = new ArrayList<Promotion>();
+	private List<MultiItemPromotion> multiItemPromotions = new ArrayList<MultiItemPromotion>();
 
-	public Checkout(Promotion promotion) {
-		this.promotions.add(promotion);
+	public Checkout(MultiItemPromotion multiItemPromotion) {
+		this.multiItemPromotions.add(multiItemPromotion);
 	}
 
-	public Checkout(Promotion... promotions) {
-		this.promotions.addAll(Arrays.asList(promotions));
+	public Checkout(MultiItemPromotion... promotions) {
+		this.multiItemPromotions.addAll(Arrays.asList(promotions));
 	}
 
 	public Checkout() {
@@ -43,7 +43,7 @@ public class Checkout {
 
 	public int total() {
 
-		return promotions //
+		return multiItemPromotions //
 				.stream() //
 				.mapToInt(promotion -> promotion.applyAndReturnUpdatedTotal(this.getBasket())) //
 				.sum() + basket.total();

@@ -1,12 +1,12 @@
 package com.cleancode.tdd.checkout2;
 
-public class Promotion {
+public class MultiItemPromotion {
 
 	private Sku sku;
 	private Integer count;
 	private Integer promotionPrice;
 
-	public Promotion(Sku sku, Integer count, Integer promotionPrice) {
+	public MultiItemPromotion(Sku sku, Integer count, Integer promotionPrice) {
 		this.sku = sku;
 		this.count = count;
 		this.promotionPrice = promotionPrice;

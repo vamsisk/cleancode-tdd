@@ -18,72 +18,72 @@ public class PromotionTest {
 
 	@Test
 	public void returnPromotionPriceIf_sku_count_Matches_For_4_SkuB() {
-		Promotion promotion = new Promotion(Sku.B, 2, 45);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.B, 2, 45);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(B, B, B, B);
 
-		Assert.assertThat(90, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(90, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIf_sku_count_Matches_For_3_SkuB() {
-		Promotion promotion = new Promotion(Sku.B, 2, 45);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.B, 2, 45);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(B, B, B);
 
-		Assert.assertThat(75, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(75, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIf_sku_count_Matches_For_2_SkuB() {
-		Promotion promotion = new Promotion(Sku.B, 2, 45);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.B, 2, 45);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(B, B);
 
-		Assert.assertThat(45, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(45, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIf_sku_count_Matches_For_1_SkuB() {
-		Promotion promotion = new Promotion(Sku.B, 2, 45);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.B, 2, 45);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(B);
 
-		Assert.assertThat(30, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(30, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIfMathces3ForSkuA() {
-		Promotion promotion = new Promotion(Sku.A, 3, 130);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.A, 3, 130);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(A);
 
-		Assert.assertThat(50, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(50, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIfMathces3ForSkuAAndSumOnActualPriceForRemainingItemsOfA() {
-		Promotion promotion = new Promotion(Sku.A, 3, 130);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.A, 3, 130);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(A);
 		checkout.scan(A);
 		checkout.scan(A);
 		checkout.scan(A);
 
-		Assert.assertThat(180, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(180, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 
 	@Test
 	public void returnPromotionPriceIfMathces7ForSkuAAndSumOnActualPriceForRemainingItemsOfA() {
-		Promotion promotion = new Promotion(Sku.A, 3, 130);
+		MultiItemPromotion multiItemPromotion = new MultiItemPromotion(Sku.A, 3, 130);
 
-		Checkout checkout = new Checkout(promotion);
+		Checkout checkout = new Checkout(multiItemPromotion);
 		checkout.scan(A);
 		checkout.scan(A);
 		checkout.scan(A);
@@ -92,6 +92,6 @@ public class PromotionTest {
 		checkout.scan(A);
 		checkout.scan(A);
 
-		Assert.assertThat(310, is(promotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
+		Assert.assertThat(310, is(multiItemPromotion.applyAndReturnUpdatedTotal(checkout.getBasket())));
 	}
 }
